@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../index";
 import { useEffect } from "react";
 import { loadPostsAction } from "../redux/actions";
+import Loader from "../Loader";
 
 export interface IPost {
   id: number;
@@ -26,6 +27,7 @@ export const Posts = () => {
   return (
     <div>
       <FormPost />
+      <Loader />
       {posts.map((post: IPost, index: number) => (
         <Post key={post.id} post={post} index={index} />
       ))}

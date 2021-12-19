@@ -8,6 +8,7 @@ import { createStore } from "redux";
 import thunk from "redux-thunk";
 import { rootReducer } from "./redux/reducers/rootReducer";
 import { applyMiddleware, compose } from "@reduxjs/toolkit";
+import { spamFilter } from "./redux/middlewares/spamFilter";
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
@@ -22,7 +23,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk, spamFilter))
 );
 
 ReactDOM.render(
